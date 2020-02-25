@@ -1,0 +1,30 @@
+{
+    "commands": [
+        {
+            "id": "beg",
+            "freq": 61,
+            "command": "beg"
+        },
+        {
+            "id": "daily",
+            "freq": 86410,
+            "command": "daily"
+        },
+        {
+            "id": "deposit",
+            "freq": 601,
+            "command": "deposit max"
+        }
+    ],
+    "preferences": {
+        "application": {
+            "winTitle": "pls",
+            "winClass": "Chrome_WidgetWin_1",
+            "hideGui": 1,
+            "debug": 1
+        },
+        "bot": {
+            "prefix": "pls"
+        }
+    }
+}
