@@ -1,5 +1,5 @@
 # DankMemer_Spammer
-Automatically spams any command(s) of your choosing at definable frequencies to best take advantage of free coins
+Automatically spams any command(s) of your choosing at definable frequencies to best take advantage of free coins. It works by keeping track of all open instances of Discord on your computer and intermittently hyjacking control to type the commands. The script then immediately places you back to where you were working before.
 
 Requires dankmemer.lol bot to be installed on the server of your expected use, however could be customized to use with any bot.
 
@@ -18,3 +18,5 @@ Setup is simple.
   <tr><td>application.debug</td><td>This enables / disables debugging to debug.ini (Enabled by default)</td><td>IntBool</td></tr>
   <tr><td>bot.prefix</td><td>This is the prefix to be added to every command</td><td>String</td></tr>
 </table>
+
+Works with both Desktop Application as well as Chrome Tab (Discord must be the top tab in that window)
