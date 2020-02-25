@@ -1,1 +1,4 @@
 debug.ini
+*.exe
+*.7z
+archives/
