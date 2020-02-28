@@ -3,7 +3,7 @@
 ; Ron Egli / github.com/smugzombie
 
 AppName = Pls Bot
-version = 1.1.6
+version = 1.1.7
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -49,6 +49,7 @@ GetOpenDiscord:
 Gui, Submit, Nohide
 WinGet, id, list,,, Program Manager
 OpenWindows := ""
+Menu,OpenWindows,DeleteAll
 ; Loop through all windows to find "discord" specific ones
 Loop, %id%
 {
@@ -60,6 +61,7 @@ Loop, %id%
 		{
 			GuiControl,, DiscordWindows, %this_title%||
 			OpenWindows = %OpenWindows%,%this_id%
+			Menu, OpenWindows, Add, %this_title%, doNothing
 		}
 	}
 	; Do this again in 5 seconds
@@ -231,11 +233,15 @@ Fetch_Counter(key){
 
 Build_Menu(){
 	global
+
+	Menu, OpenWindows, Add,
+	
 	Menu,Tray,DeleteAll
 	Menu,Tray,NoStandard
 	Menu,Tray,Add, %AppName% v%version%, ShowGui
 	Menu,Tray,Tip, %AppName% v%version%
 	Menu,Tray,Add,
+	Menu, Tray, Add, Open Windows, :OpenWindows
 	Menu,Tray,Add,&Edit Config, ShowConfig
 	Menu,Tray,Add,
 	Menu,Tray,Add,&Reload, Reload
@@ -256,6 +262,9 @@ return
 
 ShowConfig:
 	openInNotepad(A_ScriptDir . "/beggar_config.json")
+return
+
+doNothing:
 return
 
 openInNotepad(file_path){
