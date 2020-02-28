@@ -3,7 +3,7 @@
 ; Ron Egli / github.com/smugzombie
 
 AppName = Pls Bot
-version = 1.1.4
+version = 1.1.5
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -14,6 +14,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 global OpenWindows := ""
 ; Load the JSON Config file
 loadConfig()
+Build_Menu()
 
 Gui, +OwnDialogs +owner -MaximizeBox -MinimizeBox +LastFound +AlwaysOnTop
 Gui, Add, Text, x10 y9, Active:
@@ -25,7 +26,7 @@ Gui, Add, ComboBox, x50 y32 w220 vActions, %History%
 
 
 if (hideGui == 0) {
-	Gui, Show,, %AppName% %version%
+	gosub ShowGui
 	;Gui, Submit
 }
 
@@ -68,6 +69,7 @@ OpenWindows := SubStr(OpenWindows, 2, StrLen(OpenWindows))
 return
 
 processWindows:
+	Build_Menu()
 	;MsgBox "%OpenWindows%"
 	if(OpenWindows == ""){
 		; Skip doing anything, couldn't find a window.
@@ -126,7 +128,7 @@ processCommand(Command, WindowId){
 		else{
 			Send %command_command%{enter}
 		}
-		Sleep 100
+		Sleep 1500
 		BlockInput, Off ; Resume input
 	}else{
 		; Do Nothing
@@ -225,3 +227,26 @@ Fetch_Counter(key){
 	IniRead, Output, %counterFile%, Counts, %key%, 0
 	return %Output%
 }
+
+Build_Menu(){
+	global
+	Menu,Tray,DeleteAll
+	Menu,Tray,NoStandard
+	Menu,Tray,Add, %AppName% v%version%, ShowGui
+	Menu,Tray,Tip, %AppName% v%version%
+	Menu,Tray,Add,
+	Menu,Tray,Add,&Reload, Reload
+	Menu,Tray,Add,
+	Menu,Tray,Add,E&xit, Exit
+}
+
+ShowGui:
+Gui, Show,, %AppName% v%version%
+return
+
+Reload:
+Reload
+return
+
+Exit:
+ExitApp
