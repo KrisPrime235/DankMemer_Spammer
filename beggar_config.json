@@ -4,31 +4,50 @@
             "id": "beg",
             "freq": 61,
             "command": "beg",
-            "enabled": true
+            "enabled": true,
+            "prefix": true
         },
         {
             "id": "daily",
             "freq": 86410,
             "command": "daily",
-            "enabled": true
+            "enabled": true,
+            "prefix": true
         },
         {
             "id": "deposit",
             "freq": 601,
             "command": "deposit max",
-            "enabled": true
+            "enabled": true,
+            "prefix": true
         },
         {
             "id": "spam",
             "freq": 61,
             "command": "help",
-            "enabled": false
+            "enabled": false,
+            "prefix": true
         },
         {
             "id": "gamble",
-            "freq": 10,
-            "command": "gamble 50",
-            "enabled": false
+            "freq": 300,
+            "command": "gamble 100",
+            "enabled": true,
+            "prefix": true
+        },
+        {
+            "id": "postmemes",
+            "freq": 125,
+            "command": "pm",
+            "enabled": true,
+            "prefix": true
+        },
+        {
+            "id": "postmemes2",
+            "freq": 130,
+            "command": "d",
+            "enabled": true,
+            "prefix": false
         }
     ],
     "preferences": {
