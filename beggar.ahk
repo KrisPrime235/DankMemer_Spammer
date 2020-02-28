@@ -3,7 +3,7 @@
 ; Ron Egli / github.com/smugzombie
 
 AppName = Pls Bot
-version = 1.1.1
+version = 1.1.3
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -101,7 +101,10 @@ discordCommand(WindowId){
 	WinGetActiveTitle, SwitchBack
 	for each, loc_Command in Commands
 	{
-		processCommand(loc_Command,WindowId)
+		command_enabled := loc_Command.enabled
+		if(command_enabled){
+			processCommand(loc_Command,WindowId)
+		}
 	}
 	WinActivate, %SwitchBack%
 }
@@ -156,8 +159,11 @@ loadCommands(){
 	global
 	for each, loc_Command in Commands
 	{
+		command_enabled := loc_Command.enabled
 		command_id := loc_Command.id
-		last_run%command_id% = 0
+		if(command_enabled){
+			last_run%command_id% = 0
+		}
 	}
 }
 
@@ -185,6 +191,14 @@ checkInterval(command_id, frequency){
 	}
 
 	DEBUG(last_run_var "_fired", False)
+
+	; Clean up some memory
+	StartTime =
+	difference =
+	last_run_var =
+	last_run%command_id% = 
+	Now = 
+
 	return False
 }
 

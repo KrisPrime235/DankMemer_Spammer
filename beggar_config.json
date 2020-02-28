@@ -3,17 +3,32 @@
         {
             "id": "beg",
             "freq": 61,
-            "command": "beg"
+            "command": "beg",
+            "enabled": true
         },
         {
             "id": "daily",
             "freq": 86410,
-            "command": "daily"
+            "command": "daily",
+            "enabled": true
         },
         {
             "id": "deposit",
             "freq": 601,
-            "command": "deposit max"
+            "command": "deposit max",
+            "enabled": true
+        },
+        {
+            "id": "spam",
+            "freq": 61,
+            "command": "help",
+            "enabled": false
+        },
+        {
+            "id": "gamble",
+            "freq": 10,
+            "command": "gamble 50",
+            "enabled": false
         }
     ],
     "preferences": {
