@@ -3,7 +3,7 @@
 ; Ron Egli / github.com/smugzombie
 
 AppName = Pls Bot
-version = 1.1.7
+version = 1.1.8
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -120,6 +120,7 @@ processCommand(Command, WindowId){
 	command_command := Command.command
 	command_freq := Command.freq
 	command_prefix := Command.prefix
+	command_response := Command.response
 	;msgbox % command
 	if(checkInterval(command_id,command_freq) == True){
 		;msgbox Fired
@@ -131,6 +132,12 @@ processCommand(Command, WindowId){
 		else{
 			Send %command_command%{enter}
 		}
+
+		if(command_response != ""){
+			Sleep 3000
+			Send %command_response%{enter}
+		}
+
 		Sleep 1500
 		BlockInput, Off ; Resume input
 	}else{

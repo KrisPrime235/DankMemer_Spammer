@@ -5,56 +5,56 @@
             "freq": 61,
             "command": "beg",
             "enabled": true,
-            "prefix": true
+            "prefix": true,
+            "response": ""
         },
         {
             "id": "daily",
             "freq": 86410,
             "command": "daily",
             "enabled": true,
-            "prefix": true
+            "prefix": true,
+            "response": ""
         },
         {
             "id": "deposit",
             "freq": 601,
             "command": "deposit max",
             "enabled": true,
-            "prefix": true
+            "prefix": true,
+            "response": ""
         },
         {
             "id": "spam",
             "freq": 61,
             "command": "help",
             "enabled": false,
-            "prefix": true
+            "prefix": true,
+            "response": ""
         },
         {
             "id": "gamble",
             "freq": 300,
             "command": "gamble 100",
             "enabled": true,
-            "prefix": true
+            "prefix": true,
+            "response": ""
         },
         {
             "id": "postmemes",
             "freq": 125,
             "command": "pm",
             "enabled": true,
-            "prefix": true
-        },
-        {
-            "id": "postmemes2",
-            "freq": 130,
-            "command": "d",
-            "enabled": true,
-            "prefix": false
+            "prefix": true,
+            "response": "d"
         },
         {
             "id": "candy",
             "freq": 83,
             "command": "use candy",
             "enabled": true,
-            "prefix": true
+            "prefix": true,
+            "response": ""
         }
     ],
     "preferences": {
@@ -68,6 +68,6 @@
         "bot": {
             "prefix": "pls"
         },
-        "version" : "1.1.5"
+        "version" : "1.1.8"
     }
 }
