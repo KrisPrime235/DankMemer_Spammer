@@ -10,6 +10,7 @@ Setup is simple.
   <tr><td>id</td><td>Gives a unique id to be used for counters (no spaces, alphanumeric only pls)</td><td>String</td></tr>
   <tr><td>command</td><td>Defines the command to be run. (Don't add the bot prefix here)</td><td>String</td></tr>
   <tr><td>freq</td><td>How often, in seconds, this command should run.</td><td>String</td></tr>
+  <tr><td>enabled</td><td>If enabled, will run at interval. If disabled, will never run.</td><td>String</td></tr>
   <tr></tr>
   <thead><tr><td colspan=3>Preferences:</td></tr><tr><th>Key</th><th>What does it do?</th><th>Type</th></tr></thead>
   <tr><td>application.winTitle</td><td>This is a string that the title of the discord window should contain in order to be discovered properly</td><td>String</td></tr>
