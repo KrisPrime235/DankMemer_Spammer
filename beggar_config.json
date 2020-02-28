@@ -48,6 +48,13 @@
             "command": "d",
             "enabled": true,
             "prefix": false
+        },
+        {
+            "id": "candy",
+            "freq": 83,
+            "command": "use candy",
+            "enabled": true,
+            "prefix": true
         }
     ],
     "preferences": {
