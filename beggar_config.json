@@ -21,7 +21,8 @@
             "winTitle": "pls",
             "winClass": "Chrome_WidgetWin_1",
             "hideGui": 1,
-            "debug": 1
+            "debug": 1,
+            "counterFile": "counter.ini"
         },
         "bot": {
             "prefix": "pls"

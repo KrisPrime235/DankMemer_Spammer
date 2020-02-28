@@ -3,7 +3,7 @@
 ; Ron Egli / github.com/smugzombie
 
 AppName = Pls Bot
-version = 1.0
+version = 1.1
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -67,21 +67,25 @@ OpenWindows := SubStr(OpenWindows, 2, StrLen(OpenWindows))
 return
 
 processWindows:
-
-	IfInString, OpenWindows, ,
-	{
-		; If we found multiple windows, iterate through them
-		for each, Window_id in Windows
+	;MsgBox "%OpenWindows%"
+	if(OpenWindows == ""){
+		; Skip doing anything, couldn't find a window.
+	}
+	else{
+		IfInString, OpenWindows, ,
 		{
-			discordCommand(Window_id)
+			; If we found multiple windows, iterate through them
+			for each, Window_id in Windows
+			{
+				discordCommand(Window_id)
+			}
+		}
+		Else
+		{
+			; Otherwise just process the one
+			discordCommand(OpenWindows)
 		}
 	}
-	Else
-	{
-		; Otherwise just process the one
-		discordCommand(OpenWindows)
-	}
-
 	; If none were found, sleep for 5 seconds and try again, Otherwise sleep for 5 seconds anyway
 
 	Sleep 5000
@@ -137,6 +141,7 @@ loadConfig(){
 	winTitle := Data.Preferences.Application.winTitle
 	winClass := Data.Preferences.Application.winClass
 	hideGui := Data.Preferences.Application.hideGui
+	counterFile := Data.Preferences.Application.counterFile
 	botPrefix := Data.Preferences.Bot.prefix
 	debug := Data.Preferences.Application.debug
 	commands := Data.Commands
@@ -161,15 +166,19 @@ checkInterval(command_id, frequency){
 	last_run_var = last_run%command_id%
 	
 	Now := A_TickCount
-	StartTime := last_run%command_id%
+	;StartTime := last_run%command_id%
+	StartTime := Fetch_Counter(last_run_var)
+	;msgbox % StartTime
 	difference := Ceil((Now-StartTime)/1000)
+	;msgbox % difference
 	DEBUG(last_run_var "_difference", difference)
 
-	if(last_run%command_id% == 0 || difference > frequency){
+	if(StartTime == 0 || difference > frequency){
 		DEBUG(last_run_var "_pre", last_run%command_id%)
 		last_run%command_id% := Now
-		
+		; msgbox, Fired
 		DEBUG(last_run_var "_post", last_run%command_id%)
+		Update_Counter(last_run_var, last_run%command_id%)
 		DEBUG(last_run_var "_fired", True)
 		return True
 	}
@@ -183,4 +192,15 @@ DEBUG(key, value){
 	if(debug == 1){
 		IniWrite, %value%, debug.ini, Debug, %key%
 	}
+}
+
+Update_Counter(key, value){
+	global
+	IniWrite, %value%, %counterFile%, Counts, %key%
+}
+
+Fetch_Counter(key){
+	global
+	IniRead, Output, %counterFile%, Counts, %key%, 0
+	return %Output%
 }
