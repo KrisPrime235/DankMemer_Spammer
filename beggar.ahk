@@ -3,7 +3,7 @@
 ; Ron Egli / github.com/smugzombie
 
 AppName = Pls Bot
-version = 1.1
+version = 1.1.1
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -22,10 +22,11 @@ Gui, Add, Button, y5 x275 w50 gClearOpenDiscord, Fetch
 Gui, Add, Text, x10 y35, Action: 
 Gui, Add, ComboBox, x50 y32 w220 vActions, %History%
 ;Gui, Add, Button, y31 x275 w50 vRunButton gbeg, Run
-Gui, Show,, %AppName% %version%
 
-if (hideGui == 1) {
-	Gui, Submit
+
+if (hideGui == 0) {
+	Gui, Show,, %AppName% %version%
+	;Gui, Submit
 }
 
 ; Fetch the most recent copy of open Discord Windows
