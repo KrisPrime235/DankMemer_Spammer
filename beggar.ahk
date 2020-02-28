@@ -236,6 +236,8 @@ Build_Menu(){
 	Menu,Tray,Add, %AppName% v%version%, ShowGui
 	Menu,Tray,Tip, %AppName% v%version%
 	Menu,Tray,Add,
+	Menu,Tray,Add,&Edit Config, ShowConfig
+	Menu,Tray,Add,
 	Menu,Tray,Add,&Reload, Reload
 	Menu,Tray,Add,
 	Menu,Tray,Add,E&xit, Exit
@@ -252,13 +254,25 @@ ShowGui:
 Gui, Show,, %AppName% v%version%
 return
 
+ShowConfig:
+	openInNotepad(A_ScriptDir . "/beggar_config.json")
+return
+
+openInNotepad(file_path){
+	IfNotExist, %file_path%
+	{
+		msgbox,,%AppName%, File Not Found
+		return
+	}
+	Run Notepad.exe %file_path%
+}
+
 Reload:
 Reload
 return
 
 Exit:
 ExitApp
-
 
 Extract_icon(_Filename, _DumpData = 0)
 {
