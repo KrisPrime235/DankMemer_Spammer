@@ -1,5 +1,5 @@
 # DankMemer_Spammer
-Automatically spams any command(s) of your choosing at definable frequencies to best take advantage of free coins. It works by keeping track of all open instances of Discord on your computer and intermittently hyjacking control to type the commands. The script then immediately places you back to where you were working before.
+Automatically spams any command(s) of your choosing at definable frequencies to best take advantage of free coins. It works by keeping track of all open instances of Discord on your computer and intermittently hijacking control to type the commands. The script then immediately places you back to where you were working before.
 
 Requires dankmemer.lol bot to be installed on the server of your expected use, however could be customized to use with any bot.
 
